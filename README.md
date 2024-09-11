@@ -1,7 +1,8 @@
 config_struct
 ===
 
-This is a library for converting config files into matching source files at build time.
+This is a demo library showcasing how to convert config files into matching source files at build time.
+Heavily borrowed from https://github.com/mistodon/config_struct
 
 ## Usage
 
@@ -12,8 +13,7 @@ This library is intended to be used in a `build.rs` file, so it needs to be adde
 version = "~0.4.0"
 features = ["toml-parsing"]
 ```
-
-By default, `config_struct` is markup-language-agnostic, so include the relevant feature for whatever language your config file is written in. Choices are:
+Markup-language-agnostic by default. Include the relevant feature for whatever language your config file is written in. Choices are:
 
 1.  `json-parsing`
 2.  `ron-parsing`
@@ -28,7 +28,7 @@ Now in your `build.rs` file, add code like the following:
 use config_struct::{Error, StructOptions};
 
 fn main() -> Result<(), Error> {
-    config_struct::create_config(
+    config_to_struct::create_config(
         "config.toml",
         "src/config.rs",
         &StructOptions::default())
@@ -97,7 +97,7 @@ Enum generation works in a similar way to structs, but for the keys of a map.
 use config_struct::{Error, EnumOptions};
 
 fn main() -> Result<(), Error> {
-    config_struct::create_enum(
+    config_to_struct::create_enum(
         "items.yaml",
         "src/items.rs",
         &EnumOptions::default())
