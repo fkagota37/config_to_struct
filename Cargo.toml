@@ -1,0 +1,45 @@
+[package]
+name = "config_to_struct"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.convert_case]
+version = "~0.6.0"
+
+[dependencies.case]
+version = "~1.0.0"
+optional = true
+
+[dependencies.failure]
+version = "~0.1.1"
+
+[dependencies.linear-map]
+version = "~1.2.0"
+features = ["serde_impl"]
+
+[dependencies.quote]
+version = "~1.0.3"
+
+[dependencies.ron]
+version = "~0.3.0"
+optional = true
+
+[dependencies.serde_json]
+version = "~1.0.24"
+optional = true
+
+[dependencies.serde_yaml]
+version = "~0.7.5"
+optional = true
+
+[dependencies.toml]
+version = "~0.4.6"
+optional = true
+
+[features]
+default = ["toml-parsing", "json-parsing", "ron-parsing", "yaml-parsing"]
+experimental-files-enum = ["case"]
+json-parsing = ["serde_json"]
+ron-parsing = ["ron"]
+toml-parsing = ["toml"]
+yaml-parsing = ["serde_yaml"]
